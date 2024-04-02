@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  SlimBody
+
+  Created by Anastasia Kravchenko on 22.09.2023.
+  
+*/
+
+
+"MainViewController.galleryButtonTitle" = "Pick";
+"MainViewController.saveButtonTitle" = "Save";
+"MainViewController.saveSuccessMessage" = "Successfully saved!";
