@@ -1,10 +1,3 @@
-//
-//  SlimBody.swift
-//  SlimBody
-//
-//  Created by Anastasia Kravchenko on 22.09.2023.
-//
-
 import Foundation
 import CoreImage
 

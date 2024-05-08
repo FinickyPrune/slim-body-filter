@@ -1,14 +1,4 @@
-//
-//  AppDelegate.swift
-//  SlimBody
-//
-//  Created by Anastasia Kravchenko on 22.09.2023.
-//
-
 import UIKit
-import SwiftyBeaver
-
-let log = SwiftyBeaver.self
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,9 +7,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var rootCoordinator: RootCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-
-        let console = ConsoleDestination()
-        log.addDestination(console)
 
         window = UIWindow(frame: UIScreen.main.bounds)
         let navigationController = UINavigationController()

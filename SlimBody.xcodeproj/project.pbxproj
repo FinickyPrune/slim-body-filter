@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7ACA8B44853E7CE0D44691DA /* Pods_SlimBody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF44EDBB9C07FF1427421AFD /* Pods_SlimBody.framework */; };
+		98F290332BEA21AB006EA38D /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 98F290322BEA21AB006EA38D /* TinyConstraints */; };
 		AF3F705B2AC29F09000B257E /* UIImage+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F705A2AC29F09000B257E /* UIImage+Orientation.swift */; };
 		AFD3D3162ABD5F8800B5CE56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD3D3152ABD5F8800B5CE56 /* AppDelegate.swift */; };
 		AFD3D31F2ABD5F8800B5CE56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFD3D31E2ABD5F8800B5CE56 /* Assets.xcassets */; };
@@ -30,7 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		464B99E29DB33F2B43391E5D /* Pods-SlimBody.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlimBody.release.xcconfig"; path = "Target Support Files/Pods-SlimBody/Pods-SlimBody.release.xcconfig"; sourceTree = "<group>"; };
 		AF3F705A2AC29F09000B257E /* UIImage+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Orientation.swift"; sourceTree = "<group>"; };
 		AFD3D3122ABD5F8800B5CE56 /* SlimBody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlimBody.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD3D3152ABD5F8800B5CE56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,8 +51,6 @@
 		AFD3D34D2ABDB43E00B5CE56 /* String+localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		AFEC003A2ABF37D500C9B2AE /* blur.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = blur.metal; sourceTree = "<group>"; };
 		AFEC003C2ABF37EE00C9B2AE /* slim_body.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = slim_body.metal; sourceTree = "<group>"; };
-		E5D618AFBF1DD455639C5AB9 /* Pods-SlimBody.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlimBody.debug.xcconfig"; path = "Target Support Files/Pods-SlimBody/Pods-SlimBody.debug.xcconfig"; sourceTree = "<group>"; };
-		FF44EDBB9C07FF1427421AFD /* Pods_SlimBody.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlimBody.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,30 +58,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ACA8B44853E7CE0D44691DA /* Pods_SlimBody.framework in Frameworks */,
+				98F290332BEA21AB006EA38D /* TinyConstraints in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		73CA31BE57CF2088D9D87141 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E5D618AFBF1DD455639C5AB9 /* Pods-SlimBody.debug.xcconfig */,
-				464B99E29DB33F2B43391E5D /* Pods-SlimBody.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		AFD3D3092ABD5F8800B5CE56 = {
 			isa = PBXGroup;
 			children = (
 				AFD3D3432ABD86B700B5CE56 /* .swiftlint.yml */,
 				AFD3D3142ABD5F8800B5CE56 /* SlimBody */,
 				AFD3D3132ABD5F8800B5CE56 /* Products */,
-				73CA31BE57CF2088D9D87141 /* Pods */,
-				E1594AB46342014E41578A7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,14 +180,6 @@
 			path = Kernels;
 			sourceTree = "<group>";
 		};
-		E1594AB46342014E41578A7A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FF44EDBB9C07FF1427421AFD /* Pods_SlimBody.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -209,18 +187,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFD3D3262ABD5F8800B5CE56 /* Build configuration list for PBXNativeTarget "SlimBody" */;
 			buildPhases = (
-				95B22DCF9CE4DA42441377F7 /* [CP] Check Pods Manifest.lock */,
 				AFD3D30E2ABD5F8800B5CE56 /* Sources */,
 				AFD3D30F2ABD5F8800B5CE56 /* Frameworks */,
 				AFD3D3102ABD5F8800B5CE56 /* Resources */,
-				FFDF3AC7607425A7D2E132A8 /* [CP] Embed Pods Frameworks */,
-				AFD3D3452ABD86F200B5CE56 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				98F290382BEA2444006EA38D /* PBXTargetDependency */,
 			);
 			name = SlimBody;
+			packageProductDependencies = (
+				98F290322BEA21AB006EA38D /* TinyConstraints */,
+			);
 			productName = SlimBody;
 			productReference = AFD3D3122ABD5F8800B5CE56 /* SlimBody.app */;
 			productType = "com.apple.product-type.application";
@@ -249,6 +228,10 @@
 				Base,
 			);
 			mainGroup = AFD3D3092ABD5F8800B5CE56;
+			packageReferences = (
+				98F290312BEA21AB006EA38D /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+				98F290342BEA2343006EA38D /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = AFD3D3132ABD5F8800B5CE56 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -270,66 +253,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		95B22DCF9CE4DA42441377F7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SlimBody-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AFD3D3452ABD86F200B5CE56 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
-		};
-		FFDF3AC7607425A7D2E132A8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SlimBody/Pods-SlimBody-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SlimBody/Pods-SlimBody-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SlimBody/Pods-SlimBody-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AFD3D30E2ABD5F8800B5CE56 /* Sources */ = {
@@ -356,6 +279,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98F290382BEA2444006EA38D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 98F290372BEA2444006EA38D /* SwiftLintPlugin */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AFD3D3242ABD5F8800B5CE56 /* Debug */ = {
@@ -474,7 +404,6 @@
 		};
 		AFD3D3272ABD5F8800B5CE56 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5D618AFBF1DD455639C5AB9 /* Pods-SlimBody.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -505,7 +434,6 @@
 		};
 		AFD3D3282ABD5F8800B5CE56 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 464B99E29DB33F2B43391E5D /* Pods-SlimBody.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -556,6 +484,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		98F290312BEA21AB006EA38D /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.2;
+			};
+		};
+		98F290342BEA2343006EA38D /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.54.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		98F290322BEA21AB006EA38D /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98F290312BEA21AB006EA38D /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
+		};
+		98F290372BEA2444006EA38D /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98F290342BEA2343006EA38D /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AFD3D30A2ABD5F8800B5CE56 /* Project object */;
 }

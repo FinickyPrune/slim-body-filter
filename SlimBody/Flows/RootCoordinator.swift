@@ -1,10 +1,3 @@
-//
-//  RootCoordinator.swift
-//  SlimBody
-//
-//  Created by Anastasia Kravchenko on 22.09.2023.
-//
-
 import UIKit
 
 class RootCoordinator: Coordinator {

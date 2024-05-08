@@ -1,10 +1,3 @@
-//
-//  UIImage+Orientation.swift
-//  SlimBody
-//
-//  Created by Anastasia Kravchenko on 26.09.2023.
-//
-
 import UIKit
 
 extension UIImage {

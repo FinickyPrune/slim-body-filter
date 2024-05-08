@@ -1,10 +1,3 @@
-//
-//  SlimBodyView.swift
-//  SlimBody
-//
-//  Created by Anastasia Kravchenko on 22.09.2023.
-//
-
 import UIKit
 
 enum PinchDirection {
@@ -84,7 +77,7 @@ class SlimBodyView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clear.withAlphaComponent(0.0)
+        backgroundColor = .clear
     }
 
     required init?(coder: NSCoder) {
