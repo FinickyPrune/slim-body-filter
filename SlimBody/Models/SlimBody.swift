@@ -1,7 +1,7 @@
 import Foundation
 import CoreImage
 
-class SlimBody: SBFilter {
+final class SlimBody: SBFilter {
 
     override var filterName: SBFilterName {
         get { return .slimBody }

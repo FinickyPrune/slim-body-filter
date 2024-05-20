@@ -1,15 +1,8 @@
-//
-//  SBGalleryInteractor.swift
-//  SlimBody
-//
-//  Created by Anastasia Kravchenko on 22.09.2023.
-//
-
 import UIKit
 
-class SBGalleryInteractor: NSObject {
+final class GalleryInteractor: NSObject {
 
-    static let sharedInstance: SBGalleryInteractor = SBGalleryInteractor()
+    static let sharedInstance: GalleryInteractor = GalleryInteractor()
 
     private var completion: (() -> Void)?
 

@@ -1,6 +1,6 @@
 import UIKit
 
-class RootCoordinator: Coordinator {
+final class RootCoordinator: Coordinator {
 
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController

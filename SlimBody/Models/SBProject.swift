@@ -3,7 +3,7 @@ import CoreImage
 
 /// This class represents in-app project, stores all needed images and filters settings (filter intensivity values and processed images)
 
-class SBProject {
+final class SBProject {
 
     private let originalImage: CIImage?
     private(set) var filteredImage: CIImage?

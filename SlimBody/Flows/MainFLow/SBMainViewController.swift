@@ -137,7 +137,7 @@ final class SBMainViewController: UIViewController {
         layout.minimumLineSpacing = 10
 
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(SBFilterCollectionViewCell.self, forCellWithReuseIdentifier: SBFilterCollectionViewCell.identifier)
+        collectionView.register(SBFilterCollectionViewCell.self)
 
         collectionView.showsHorizontalScrollIndicator = false
 
@@ -322,11 +322,10 @@ extension SBMainViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SBFilterCollectionViewCell.identifier, for: indexPath) as? SBFilterCollectionViewCell {
-            if let viewModel = viewModel {
-                cell.update(with: viewModel.displayFilterNameFor(index: indexPath.row))
-                return cell
-            }
+        let cell: SBFilterCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        if let viewModel = viewModel {
+            cell.update(with: viewModel.displayFilterNameFor(index: indexPath.row))
+            return cell
         }
         return UICollectionViewCell()
     }

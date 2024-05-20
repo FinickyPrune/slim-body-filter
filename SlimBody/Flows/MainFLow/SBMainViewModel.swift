@@ -37,7 +37,7 @@ final class SBMainViewModel {
 
     func didTapSave() {
         guard let image = currentProject?.finalImage else { return }
-        SBGalleryInteractor.sharedInstance.saveToGallery(image) { [self] in
+        GalleryInteractor.sharedInstance.saveToGallery(image) { [self] in
             self.displayDelegate?.viewModel(self, didRequestShowingMessage: "MainViewController.saveSuccessMessage".localized)
         }
     }

@@ -1,7 +1,7 @@
 import Foundation
 import CoreImage
 
-class Blur: SBFilter {
+final class Blur: SBFilter {
 
     override var filterName: SBFilterName {
         get { return .blur }

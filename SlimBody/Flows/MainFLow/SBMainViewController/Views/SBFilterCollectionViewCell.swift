@@ -2,8 +2,6 @@ import UIKit
 import TinyConstraints
 
 final class SBFilterCollectionViewCell: UICollectionViewCell {
-    static let identifier = "SBFilterCollectionViewCell"
-
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -12,7 +10,7 @@ final class SBFilterCollectionViewCell: UICollectionViewCell {
 
     private func setupUI() {
         backgroundColor = .darkGray
-        layer.cornerRadius = 15.0
+        layer.cornerRadius = Const.cornerRadius
 
         addSubview(filterNameLabel)
         filterNameLabel.edgesToSuperview()
@@ -31,4 +29,10 @@ final class SBFilterCollectionViewCell: UICollectionViewCell {
         filterNameLabel.text = name
     }
 
+}
+
+private extension SBFilterCollectionViewCell {
+    enum Const {
+        static let cornerRadius: CGFloat = 15
+    }
 }

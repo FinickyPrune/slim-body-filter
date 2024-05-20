@@ -7,7 +7,7 @@ enum PinchDirection {
     case none
 }
 
-class SlimBodyView: UIView {
+final class SlimBodyView: UIView {
 
     static let initialWidth: CGFloat = 160
     static let initialHeight: CGFloat = 160
