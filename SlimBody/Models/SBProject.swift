@@ -5,22 +5,22 @@ import CoreImage
 
 final class SBProject {
 
-    private let originalImage: CIImage?
-    private(set) var filteredImage: CIImage?
+    private let originalImage: CGImage?
+    private(set) var filteredImage: CGImage?
 
     var filterValue: Float = 0.0
 
-    var processedImage: CIImage?
+    var processedImage: CGImage?
 
     init(originalImage: UIImage) {
-        self.originalImage = CIImage(image: originalImage)
+        self.originalImage = originalImage.cgImage
         self.filteredImage = self.originalImage
         self.processedImage = filteredImage
     }
 
     var finalImage: UIImage? {
         guard let filteredImage = processedImage else { return nil }
-        let image = UIImage(ciImage: filteredImage)
+        let image = UIImage(cgImage: filteredImage)
 
         let size = image.size
         UIGraphicsBeginImageContext(size)

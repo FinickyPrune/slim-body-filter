@@ -26,10 +26,14 @@ final class Brightness: SBFilter {
     private let context: MTLContext
     let pipelineState: MTLComputePipelineState
     
-    init() throws {
-        context = try MTLContext()
-        let library = try context.library(for: Brightness.self)
-        pipelineState = try library.computePipelineState(function: "brightness")
+    init?() {
+        guard let context = try? MTLContext(),
+        let library = try? context.library(for: Brightness.self),
+              let pipelineState = try? library.computePipelineState(function: "brightness") else {
+            return nil
+        }
+        self.context = context
+        self.pipelineState = pipelineState
     }
     
     private func encode(input: MTLTexture,

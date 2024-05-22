@@ -1,56 +1,72 @@
 import Foundation
-import CoreImage
+import CoreGraphics
+import Metal
 
 final class Blur: SBFilter {
 
-    override var filterName: SBFilterName {
-        get { return .blur }
-        set {}
+    var inputImage: CGImage?
+    
+    func setIntensivity(value: Float) {
+        intensivity = maxIntensivity * value
     }
+        
+    var filterName: SBFilterName { .blur }
 
-    override var filterType: SBFilterType {
-        get { return .background }
-        set {}
-    }
+    var filterType: SBFilterType { .background }
 
-    override var displayFilterName: String {
-        get { return filterName.rawValue }
-        set {}
-    }
-
-    // Property represents region of interest of filter. In this case return value is whole image.
-
-    private let roiCallback: CIKernelROICallback = { _, rect -> CGRect in
-        return rect
+    var displayFilterName: String { filterName.rawValue }
+    
+    var intensivity: Float = 0.0
+    let maxIntensivity: Float = 50.0
+    
+    var normalizerdFilterValue: Float {
+        intensivity / maxIntensivity
     }
 
     // Initializer creates filter kernel with default metal library and relevant metal function name.
-
-    override init() {
-        super.init()
-        let url = Bundle.main.url(forResource: "default", withExtension: "metallib")!
-        guard let data = try? Data(contentsOf: url),
-              let kern = try? CIKernel(functionName: "blur", fromMetalLibraryData: data)
-        else { fatalError() }
-
-        self.kernel = kern
+    private let context: MTLContext
+    let pipelineState: MTLComputePipelineState
+    
+    init?() {
+        guard let context = try? MTLContext(),
+        let library = try? context.library(for: Blur.self),
+              let pipelineState = try? library.computePipelineState(function: "blur") else {
+            return nil
+        }
+        self.context = context
+        self.pipelineState = pipelineState
     }
+    
+    private func encode(input: MTLTexture,
+                        output: MTLTexture,
+                        intensity: Float,
+                        in commandBuffer: MTLCommandBuffer) {
+            commandBuffer.compute { encoder in
+                encoder.setTextures([input, output])
+                encoder.setValue(Int(intensivity), at: 0)
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+                encoder.dispatch2d(state: self.pipelineState,
+                                   exactly: output.size)
+            }
+        }
 
     // Returns output CIImage created with filter kernel.
 
-    override func outputImage() -> CIImage? {
+    func outputImage() throws -> CGImage? {
         guard let inputImage = inputImage else { return nil }
-        let width = inputImage.extent.width
-        let height = inputImage.extent.height
-        return kernel?.apply(extent: inputImage.extent,
-                             roiCallback: roiCallback,
-                             arguments: [inputImage,
-                                         width,
-                                         height,
-                                         Int(intensivity)])
+        
+        let inputTexture = try context.texture(from: inputImage)
+        let outputTexture = try inputTexture.matchingTexture(usage: [.shaderWrite])
+        
+        try context.scheduleAndWait { buffer in
+            self.encode(
+                input: inputTexture,
+                output: outputTexture,
+                intensity: self.intensivity,
+                in: buffer
+            )
+        }
+        
+        return try outputTexture.cgImage()
     }
 }

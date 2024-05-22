@@ -5,7 +5,7 @@ protocol SBMainViewModelDisplayDelegate: AnyObject {
     func viewModelDidRequestReloadingViews(_ viewModel: SBMainViewModel)
     func viewModel(_ viewModel: SBMainViewModel, didChangeSlimBodyConfiguratorVisibility shouldShow: Bool)
     func viewModel(_ viewModel: SBMainViewModel, didRequestShowingMessage message: String)
-    func viewModel(_ viewModel: SBMainViewModel, didSelectImage image: CIImage)
+    func viewModel(_ viewModel: SBMainViewModel, didSelectImage image: CGImage)
 }
 
 final class SBMainViewModel {
@@ -13,7 +13,9 @@ final class SBMainViewModel {
     weak var displayDelegate: SBMainViewModelDisplayDelegate?
 
     /// Only for PoC. In future Data Source needs to be implemented
-    private let filters: [SBFilter] = [Blur(), SlimBody()]
+    private var filters: [SBFilter] {
+        return [Brightness(), Blur()].compactMap { $0 as? SBFilter }
+    }
 
     var currentProject: SBProject?
     var selectedFilter: SBFilter?
@@ -23,7 +25,7 @@ final class SBMainViewModel {
         currentProject?.filterValue ?? 0.0
     }
 
-    var currentImage: CIImage? {
+    var currentImage: CGImage? {
         currentProject?.filteredImage
     }
 
@@ -62,9 +64,9 @@ final class SBMainViewModel {
         displayDelegate?.viewModel(self, didSelectImage: processedCIImage)
     }
 
-    private func applyFilter(value: Float = 0.0) -> CIImage? {
+    private func applyFilter(value: Float = 0.0) -> CGImage? {
         selectedFilter?.setIntensivity(value: value)
-        return selectedFilter?.outputImage()
+        return try? selectedFilter?.outputImage()
     }
 
     /// Saves current associated value (intensity) into the project
@@ -83,13 +85,13 @@ final class SBMainViewModel {
     // MARK: - Slim Body Section
 
     func didChangeSlimBody(_ pointToPixelScale: CGFloat) {
-        guard let filter = selectedFilter as? SlimBody else { return }
-        filter.pointToPixelScale = pointToPixelScale
+//        guard let filter = selectedFilter as? SlimBody else { return }
+//        filter.pointToPixelScale = pointToPixelScale
     }
 
     func didChangeSlimBody(_ transform: CGAffineTransform) {
-        guard let filter = selectedFilter as? SlimBody else { return }
-        filter.transform = transform
+//        guard let filter = selectedFilter as? SlimBody else { return }
+//        filter.transform = transform
     }
 
 }

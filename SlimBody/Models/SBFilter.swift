@@ -7,6 +7,7 @@ enum SBFilterName: String {
     case none = ""
     case blur = "Blur"
     case slimBody = "Slim Body"
+    case brightness = "Brightness"
 }
 
 // Filter types
@@ -19,28 +20,34 @@ enum SBFilterType {
 
 /// Class inherites CIFilter class and represents in-app filter. Inherit from this class in case you want to create new filter.
 
-class SBFilter: CIFilter {
+protocol SBFilter {
 
     // Override this properties in every new filter.
-    open var filterName: SBFilterName = .none
-    open var displayFilterName: String = ""
-    open var filterType: SBFilterType = .none
-    open var kernel: CIKernel?
+    var filterName: SBFilterName { get }
+    var displayFilterName: String { get }
+    var filterType: SBFilterType { get }
 
-    open var inputImage: CIImage?
+    var inputImage: CGImage? { get set }
 
-    func setIntensivity(value: Float) {
-        intensivity = maxIntensivity * value
+    func setIntensivity(value: Float)
+    
+    var intensivity: Float { get set }
+    var maxIntensivity: Float { get }
+    
+    var normalizerdFilterValue: Float { get }
+    func outputImage() throws -> CGImage?
+    
+    
+
+}
+
+public extension MTLLibrary {
+
+    func computePipelineState(function functionName: String) throws -> MTLComputePipelineState {
+        guard let function = self.makeFunction(name: functionName) else {
+            throw MetalError.MTLLibraryError.functionCreationFailed
+        }
+        return try self.device.makeComputePipelineState(function: function)
     }
-
-    open var intensivity: Float = 0.0
-    public let maxIntensivity: Float = 50.0
-
-    open var normalizerdFilterValue: Float {
-        intensivity / maxIntensivity
-    }
-
-    // Override this method in every new filter.
-    func outputImage() -> CIImage? { return nil }
 
 }
