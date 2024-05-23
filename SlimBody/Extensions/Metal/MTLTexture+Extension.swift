@@ -3,12 +3,7 @@ import UIKit
 import Accelerate
 
 extension MTLTexture {
-    #if os(iOS) || os(tvOS)
-    typealias XImage = UIImage
-    #elseif os(macOS)
-    typealias XImage = NSImage
-    #endif
-    
+  
     var descriptor: MTLTextureDescriptor {
            let retVal = MTLTextureDescriptor()
            
@@ -197,14 +192,9 @@ extension MTLTexture {
         }
     }
     
-    func image(colorSpace: CGColorSpace? = nil) throws -> XImage {
+    func image(colorSpace: CGColorSpace? = nil) throws -> UIImage {
         let cgImage = try self.cgImage(colorSpace: colorSpace)
-        #if os(iOS)
+       
         return UIImage(cgImage: cgImage)
-        #elseif os(macOS)
-        return NSImage(cgImage: cgImage,
-                       size: CGSize(width: cgImage.width,
-                                    height: cgImage.height))
-        #endif
     }
 }

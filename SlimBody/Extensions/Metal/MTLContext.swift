@@ -1,28 +1,28 @@
 import Metal
 import MetalKit
 
-public final class MTLContext {
+final class MTLContext {
 
     // MARK: - Properties
 
-    public let device: MTLDevice
-    public let commandQueue: MTLCommandQueue
+    let device: MTLDevice
+    let commandQueue: MTLCommandQueue
 
     private var libraryCache: [Bundle: MTLLibrary] = [:]
-    public private(set) lazy var textureLoader = MTKTextureLoader(device: self.device)
+    private(set) lazy var textureLoader = MTKTextureLoader(device: self.device)
 
     // MARK: - Init
 
-    public convenience init() throws {
+    convenience init() throws {
         try self.init(device: MTLCreateSystemDefaultDevice()!)
     }
 
-    public init(commandQueue: MTLCommandQueue) {
+    init(commandQueue: MTLCommandQueue) {
         self.device = commandQueue.device
         self.commandQueue = commandQueue
     }
 
-    public convenience init(device: MTLDevice,
+    convenience init(device: MTLDevice,
                             bundle: Bundle = .main,
                             name: String? = nil) throws {
         guard let commandQueue = device.makeCommandQueue()
@@ -45,21 +45,17 @@ public final class MTLContext {
         self.libraryCache[bundle] = library
     }
 
-    public func library(for class: AnyClass) throws -> MTLLibrary {
+    func library(for class: AnyClass) throws -> MTLLibrary {
         return try self.library(for: Bundle(for: `class`))
     }
 
-    public func library(for bundle: Bundle) throws -> MTLLibrary {
+    func library(for bundle: Bundle) throws -> MTLLibrary {
         if self.libraryCache[bundle] == nil {
             self.libraryCache[bundle] = try self.device
                                                 .makeDefaultLibrary(bundle: bundle)
         }
 
         return self.libraryCache[bundle]!
-    }
-
-    public func purgeLibraryCache() {
-        self.libraryCache = [:]
     }
     
     /// Creates a texture out of CGImage
@@ -72,7 +68,7 @@ public final class MTLContext {
     ///   in all other cases MetalKit with decide on it on it's own
     ///   - usage: Usage parameter of texture
     ///   - generateMipmaps: Boolean flag that indicated whether or not to generate mipmaps
-    public func texture(from image: CGImage,
+    func texture(from image: CGImage,
                         srgb: Bool? = nil,
                         usage: MTLTextureUsage = [.shaderRead],
                         generateMipmaps: Bool = false) throws -> MTLTexture {

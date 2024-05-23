@@ -41,7 +41,7 @@ protocol SBFilter {
 
 }
 
-public extension MTLLibrary {
+extension MTLLibrary {
 
     func computePipelineState(function functionName: String) throws -> MTLComputePipelineState {
         guard let function = self.makeFunction(name: functionName) else {
