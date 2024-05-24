@@ -7,6 +7,7 @@ enum SBFilterName: String {
     case none = ""
     case blur = "Blur"
     case slimBody = "Slim Body"
+    case brightness = "Brightness"
 }
 
 // Filter types

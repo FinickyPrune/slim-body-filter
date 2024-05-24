@@ -1,10 +1,10 @@
 import Foundation
 import CoreImage
 
-final class Blur: SBFilter {
+final class Brightness: SBFilter {
 
     override var filterName: SBFilterName {
-        get { return .blur }
+        get { return .brightness }
         set {}
     }
 
@@ -28,9 +28,9 @@ final class Blur: SBFilter {
 
     override init() {
         super.init()
-        guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-              let data = try? Data(contentsOf: url),
-              let kern = try? CIKernel(functionName: "blur", fromMetalLibraryData: data)
+        let url = Bundle.main.url(forResource: "default", withExtension: "metallib")!
+        guard let data = try? Data(contentsOf: url),
+              let kern = try? CIKernel(functionName: "brightness", fromMetalLibraryData: data)
         else { fatalError() }
 
         self.kernel = kern
@@ -51,6 +51,6 @@ final class Blur: SBFilter {
                              arguments: [inputImage,
                                          width,
                                          height,
-                                         Int(intensivity)])
+                                         intensivity])
     }
 }

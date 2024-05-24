@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98A4F4182C00735400CEBA20 /* brightness.metal in Sources */ = {isa = PBXBuildFile; fileRef = 98A4F4172C00735400CEBA20 /* brightness.metal */; };
+		98A4F41A2C00743C00CEBA20 /* Brightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4F4192C00743C00CEBA20 /* Brightness.swift */; };
 		98B3DD3B2BEB37800058AAE6 /* Cell+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B3DD3A2BEB37800058AAE6 /* Cell+Reusable.swift */; };
 		98F290332BEA21AB006EA38D /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 98F290322BEA21AB006EA38D /* TinyConstraints */; };
 		AF3F705B2AC29F09000B257E /* UIImage+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3F705A2AC29F09000B257E /* UIImage+Orientation.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		98A4F4172C00735400CEBA20 /* brightness.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = brightness.metal; sourceTree = "<group>"; };
+		98A4F4192C00743C00CEBA20 /* Brightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brightness.swift; sourceTree = "<group>"; };
 		98B3DD3A2BEB37800058AAE6 /* Cell+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Reusable.swift"; sourceTree = "<group>"; };
 		AF3F705A2AC29F09000B257E /* UIImage+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Orientation.swift"; sourceTree = "<group>"; };
 		AFD3D3122ABD5F8800B5CE56 /* SlimBody.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlimBody.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +128,7 @@
 			children = (
 				AFEC00382ABF37B700C9B2AE /* Filters */,
 				AFD3D3302ABD73B200B5CE56 /* SBProject.swift */,
+				98A4F4192C00743C00CEBA20 /* Brightness.swift */,
 				AFD3D3322ABD76BE00B5CE56 /* SBFilter.swift */,
 				AFD3D3342ABD7D1F00B5CE56 /* Blur.swift */,
 				AFD3D3362ABD7D4B00B5CE56 /* SlimBody.swift */,
@@ -179,6 +184,7 @@
 			children = (
 				AFEC003A2ABF37D500C9B2AE /* blur.metal */,
 				AFEC003C2ABF37EE00C9B2AE /* slim_body.metal */,
+				98A4F4172C00735400CEBA20 /* brightness.metal */,
 			);
 			path = Kernels;
 			sourceTree = "<group>";
@@ -274,6 +280,8 @@
 				AFD3D3372ABD7D4B00B5CE56 /* SlimBody.swift in Sources */,
 				AFD3D34E2ABDB43E00B5CE56 /* String+localized.swift in Sources */,
 				AFD3D3352ABD7D1F00B5CE56 /* Blur.swift in Sources */,
+				98A4F4182C00735400CEBA20 /* brightness.metal in Sources */,
+				98A4F41A2C00743C00CEBA20 /* Brightness.swift in Sources */,
 				AFD3D3332ABD76BE00B5CE56 /* SBFilter.swift in Sources */,
 				AF3F705B2AC29F09000B257E /* UIImage+Orientation.swift in Sources */,
 				AFEC003D2ABF37EE00C9B2AE /* slim_body.metal in Sources */,

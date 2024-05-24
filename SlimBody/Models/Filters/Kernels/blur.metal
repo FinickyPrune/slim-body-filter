@@ -1,10 +1,3 @@
-//
-//  blur.metal
-//  SlimBody
-//
-//  Created by Anastasia Kravchenko on 23.09.2023.
-//
-
 #include <metal_stdlib>
 #include <CoreImage/CoreImage.h>
 using namespace metal;

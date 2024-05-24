@@ -13,7 +13,7 @@ final class SBMainViewModel {
     weak var displayDelegate: SBMainViewModelDisplayDelegate?
 
     /// Only for PoC. In future Data Source needs to be implemented
-    private let filters: [SBFilter] = [Blur(), SlimBody()]
+    private let filters: [SBFilter] = [Brightness(), Blur(), SlimBody()]
 
     var currentProject: SBProject?
     var selectedFilter: SBFilter?

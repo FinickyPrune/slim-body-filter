@@ -237,6 +237,9 @@ final class SBMainViewController: UIViewController {
             case .slimBody:
                 intensivitySlider.minimumValue = -1.0
                 intensivitySlider.maximumValue = 1.0
+            case .brightness:
+                intensivitySlider.minimumValue = 0.0
+                intensivitySlider.maximumValue = 1.0
             }
             intensivitySlider.value = viewModel?.selectedFilterValue ?? 0.0
         }
