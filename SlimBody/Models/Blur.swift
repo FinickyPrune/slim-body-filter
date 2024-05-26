@@ -25,11 +25,12 @@ final class Blur: SBFilter {
 
     // Initializer creates filter kernel with default metal library and relevant metal function name.
     private let context: MTLContext
+    
     let pipelineState: MTLComputePipelineState
     
     init?() {
         guard let context = try? MTLContext(),
-        let library = try? context.library(for: Blur.self),
+              let library = try? context.library(for: Blur.self),
               let pipelineState = try? library.computePipelineState(function: "blur") else {
             return nil
         }
@@ -41,14 +42,14 @@ final class Blur: SBFilter {
                         output: MTLTexture,
                         intensity: Float,
                         in commandBuffer: MTLCommandBuffer) {
-            commandBuffer.compute { encoder in
-                encoder.setTextures([input, output])
-                encoder.setValue(Int(intensivity), at: 0)
-
-                encoder.dispatch2d(state: self.pipelineState,
-                                   exactly: output.size)
-            }
+        commandBuffer.compute { encoder in
+            encoder.setTextures([input, output])
+            encoder.setValue(Int(intensivity), at: 0)
+            
+            encoder.dispatch2d(state: self.pipelineState,
+                               exactly: output.size)
         }
+    }
 
     // Returns output CIImage created with filter kernel.
 
