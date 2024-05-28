@@ -13,12 +13,12 @@ final class SBMainViewModel {
     weak var displayDelegate: SBMainViewModelDisplayDelegate?
 
     /// Only for PoC. In future Data Source needs to be implemented
-    private var filters: [SBFilter] {
-        return [Brightness(), Blur()].compactMap { $0 as? SBFilter }
+    private var filters: [Filter] {
+        return [Brightness(), Blur()].compactMap { $0 as? Filter }
     }
 
     var currentProject: SBProject?
-    var selectedFilter: SBFilter?
+    var selectedFilter: Filter?
 
     /// A value associated with selected filter. Usually represents intensity.
     var selectedFilterValue: Float {

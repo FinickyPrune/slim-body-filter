@@ -18,7 +18,7 @@ kernel void blur(texture2d<float, access::read> input [[ texture(0) ]],
 
     //      Define parameters for blur implementation
 
-    float sigma = max(float(radius/2), 1.0);
+    float sigma = max(radius*input.get_width()/2, input.get_width());
     int kernel_size = radius * 2 + 1;
     float kernel_weight = 0;
     
@@ -28,19 +28,19 @@ kernel void blur(texture2d<float, access::read> input [[ texture(0) ]],
     
             //          Count blur kernel weight
     
-            for (int j = 0; j <= kernel_size - 1; j++) {
-                for (int i = 0; i <= kernel_size - 1; i++) {
-                    int2 normalized_position(i - radius, j - radius);
-                    kernel_weight += gauss(normalized_position.x, sigma) * gauss(normalized_position.y, sigma);
+            for (int j = 0; j < kernel_size; j++) {
+                for (int i = 0; i < kernel_size; i++) {
+                    int2 centered_position(i - radius, j - radius);
+                    kernel_weight += gauss(centered_position.x, sigma) * gauss(centered_position.y, sigma);
                 }
             }
     
             float4 blured_color(0, 0, 0, 0);
-            for (int j = 0; j <= kernel_size - 1; j++) {
-                for (int i = 0; i <= kernel_size - 1; i++) {
-                    int2 normalized_position(i - radius, j - radius);
+            for (int j = 0; j < kernel_size; j++) {
+                for (int i = 0; i < kernel_size; i++) {
+                    int2 centered_position(i - radius, j - radius);
                     ushort2 texture_index(position.x + (i - radius), position.y + (j - radius));
-                    float factor = gauss(normalized_position.x, sigma) * gauss(normalized_position.y, sigma) / kernel_weight;
+                    float factor = gauss(centered_position.x, sigma) * gauss(centered_position.y, sigma) / kernel_weight;
                     blured_color += factor * input.read(texture_index).rgba;
                 }
             }

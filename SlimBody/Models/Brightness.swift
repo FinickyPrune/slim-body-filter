@@ -2,16 +2,16 @@ import Foundation
 import CoreGraphics
 import Metal
 
-final class Brightness: SBFilter {
+final class Brightness: Filter {
     var inputImage: CGImage?
     
     func setIntensivity(value: Float) {
         intensivity = maxIntensivity * value
     }
         
-    var filterName: SBFilterName { .brightness }
+    var filterName: FilterName { .brightness }
 
-    var filterType: SBFilterType { .background }
+    var filterType: FilterType { .background }
 
     var displayFilterName: String { filterName.rawValue }
     

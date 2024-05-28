@@ -2,7 +2,7 @@ import Foundation
 import CoreGraphics
 import Metal
 
-final class Blur: SBFilter {
+final class Blur: Filter {
 
     var inputImage: CGImage?
     
@@ -10,9 +10,9 @@ final class Blur: SBFilter {
         intensivity = maxIntensivity * value
     }
         
-    var filterName: SBFilterName { .blur }
+    var filterName: FilterName { .blur }
 
-    var filterType: SBFilterType { .background }
+    var filterType: FilterType { .background }
 
     var displayFilterName: String { filterName.rawValue }
     
@@ -29,13 +29,22 @@ final class Blur: SBFilter {
     let pipelineState: MTLComputePipelineState
     
     init?() {
+        
+        guard let device = MTLCreateSystemDefaultDevice(),
+              let library = try? device.makeDefaultLibrary(bundle: Bundle.main),
+              let function = library.makeFunction(name: "blur"),
+              let pipelineState = try? device.makeComputePipelineState(function: function) else {
+                  return nil
+        }
+           
+        self.pipelineState = pipelineState
+        
         guard let context = try? MTLContext(),
               let library = try? context.library(for: Blur.self),
               let pipelineState = try? library.computePipelineState(function: "blur") else {
             return nil
         }
         self.context = context
-        self.pipelineState = pipelineState
     }
     
     private func encode(input: MTLTexture,
