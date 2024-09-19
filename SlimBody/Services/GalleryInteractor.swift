@@ -1,6 +1,6 @@
 import UIKit
 
-final class GalleryInteractor: NSObject {
+final class GalleryInteractor {
 
     static let sharedInstance: GalleryInteractor = GalleryInteractor()
 
