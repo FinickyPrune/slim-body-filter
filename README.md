@@ -8,7 +8,7 @@ Pet app developed to get familiar with:
 ## Flow
 1) Select photo from Photos
 2) Select filter from the collection (Blur, Brightness or SlimBody)
-3) Control sensetivity
+3) Control sensitivity
 4) Save photo back to Photos
 
 ## Filters Demo (Blur, Brightness, SlimBody)
